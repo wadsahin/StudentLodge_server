@@ -30,7 +30,7 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+    // await client.connect();
     const mealsCollection = client.db("StudentLodgeDB").collection('meals');
     const reviewsCollection = client.db("StudentLodgeDB").collection('reviews');
     const usersCollection = client.db("StudentLodgeDB").collection('users');
@@ -151,10 +151,10 @@ async function run() {
     // Payment intents
     app.post("/create-payment-intent", async(req, res) => {
       const { price } = req.body;
-      console.log("Payable price", price);
+      // console.log("Payable price", price);
 
       const amount = parseInt(price * 100);
-      console.log("Payable amount", amount);
+      // console.log("Payable amount", amount);
 
       // Create a PaymentIntent with the order amount and currency
       const paymentIntent = await stripe.paymentIntents.create({
@@ -285,7 +285,7 @@ async function run() {
 
 
     // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
+    // await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
